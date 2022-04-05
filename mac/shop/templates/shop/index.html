@@ -147,6 +147,9 @@ padding-right: 0;
       localStorage.clear();
       cart = {};
       updatecart(cart);
+      setTimeout(function () {
+        $('.popover').fadeOut('slow');
+    }, 4000);
     }
 
     function updatePopover(cart) {
@@ -161,8 +164,11 @@ padding-right: 0;
       popStr = popStr + "</div> <a href='/shop/checkout'> <button class='btn btn-primary' id='checkout'>checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id='clearCart'>Clear Cart</button>  ";
       document.getElementById("popcart").setAttribute("data-content", popStr);
       $("#popcart").popover("show");
+      setTimeout(function () {
+        $('.popover').fadeOut('slow');
+    }, 4000);
     }
-
+   
 
     function updatecart(cart) {
       var sum = 0;
@@ -173,6 +179,9 @@ padding-right: 0;
       localStorage.setItem("cart", JSON.stringify(cart));
       document.getElementById("cart").innerHTML = sum;
       updatePopover(cart);
+      setTimeout(function () {
+        $('.popover').fadeOut('slow');
+    }, 4000);
     }
 
     $(".divpr").on("click", "button.minus", function () {
@@ -198,6 +207,9 @@ padding-right: 0;
       document.getElementById("valpr" + a).innerHTML = cart["pr" + a][0];
       updatecart(cart);
       updatePopover(cart);
+      setTimeout(function () {
+        $('.popover').fadeOut('slow');
+    }, 4000);
     });
 
   </script>

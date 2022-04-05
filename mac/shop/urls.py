@@ -10,6 +10,7 @@ urlpatterns = [
     path('search/',views.search,name="Search"),
     path('products/<int:myid>',views.prodview,name="Product"),
     path('checkout/',views.checkout,name="Checkout"),
+    path('handlerequest/',views.handlerequest, name="handlerequest"),
     
 ]
     
