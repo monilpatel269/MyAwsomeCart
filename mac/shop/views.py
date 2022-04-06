@@ -10,7 +10,7 @@ from paytm import Checksum
 
 # Create your views here.
 from django.http import HttpResponse
-MERCHANT_KEY = 'Your-Merchant-Key-Here'
+MERCHANT_KEY = 'Your Key'
 def index(request):
     allProds = []
     catprods = Product.objects.values('category','id')
@@ -50,12 +50,12 @@ def tracker(request):
                 updates = []
                 for item in update:
                     updates.append({'text': item.update_desc, 'time': item.timestamp})
-                    response = json.dumps([updates,order[0].items_json], default=str)
+                    response = json.dumps({"status":"success","updates":updates,"itemJson":order[0].items_json}, default=str)
                 return HttpResponse(response)
             else:
-                return HttpResponse('{}')
+                return HttpResponse('{"status":"NoItem"}')
         except Exception as e:
-            return HttpResponse('{}')
+            return HttpResponse('{"status":"Error"}')
 
     return render(request, 'shop/tracker.html')
 
@@ -111,7 +111,7 @@ def checkout(request):
         # Request paytm to transfer the amount to your account after payment by user
         param_dict = {
 
-                'MID': 'Your-Merchant-Id-Here',
+                'MID': 'MID',
                 'ORDER_ID': str(order.order_id),
                 'TXN_AMOUNT': str(amount),
                 'CUST_ID': email,
@@ -143,4 +143,4 @@ def handlerequest(request):
             print('order successful')
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
-    return render(request, 'shop/paymentstatus.html', {'response': response_dict})
+    return render(request, 'shop/paytmstatus.html', {'response': response_dict})
