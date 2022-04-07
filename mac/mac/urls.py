@@ -19,6 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+admin.site.site_header="MAC Admin"
+admin.site.site_title="MAC Admin Panel"
+admin.site.index_title="Welcome to MAC Admin Panel"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
