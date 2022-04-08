@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
@@ -9,6 +10,7 @@ class Blogpost(models.Model):
     title = models.CharField(max_length=50,default="")
     author = models.CharField(max_length=300,default="")
     content = models.TextField(default="")
+    views = models.IntegerField(default=0)
     pub_date = models.DateField()
     thumbnail = models.ImageField(upload_to='shop/images', default="")
 

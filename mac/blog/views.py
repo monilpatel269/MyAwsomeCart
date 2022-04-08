@@ -16,6 +16,8 @@ def index(request):
 
 def blogpost(request,id):
     post = Blogpost.objects.filter(post_id = id)[0]
+    post.views = post.views+1
+    post.save()
     comments= BlogComment.objects.filter(post=post)
     replies= BlogComment.objects.filter(post=post).exclude(parent=None)
     replyDict={}

@@ -12,10 +12,10 @@
 
             <div class="blog-post">
                 <h2 class="blog-post-title">{{post.title}}</h2>
-                <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+                <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a> (<span>{{post.views}} views</span>)</p>
                 <div class="fb-like" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div><br>
                 <p>{{post.author}}</p>
-                <p>{{post.content}}</p>
+                <p>{{post.content|safe}}</p>
 
             </div><!-- /.blog-post -->
            
